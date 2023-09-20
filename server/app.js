@@ -1,9 +1,11 @@
 const path = require("path");
 const AutoLoad = require("@fastify/autoload");
 
+const { DB_SERVER, DB_USER, DB_NAME } = "./config/db";
+
 module.exports = async function (fastify, opts) {
   fastify.register(require("@fastify/mysql"), {
-    connectionString: "mysql://root@localhost/trial_saltstrong",
+    connectionString: `${DB_SERVER}://${DB_USER}@localhost/${DB_NAME}`,
   });
 
   fastify.register(AutoLoad, {
