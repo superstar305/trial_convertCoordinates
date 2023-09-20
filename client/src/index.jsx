@@ -6,7 +6,6 @@ import { useState, useEffect } from 'preact/hooks';
 //import component
 import Button from './component/Button';
 import Input from './component/Input';
-import CheckBox from './component/Checkbox';
 import GoogleMapReact from 'google-map-react';
 //import constant
 import { initPosition } from './constant';
@@ -21,6 +20,7 @@ export function App() {
   const [longitude, setLongitude] = useState(initPosition.lng);
   const [dmslatitude, setDmslatitude] = useState('0');
   const [dmslongitude, setDmslongitude] = useState('0');
+  const [showMarker, setShowMarker] = useState(false);
 
   useEffect(() => {
     convertDMS(latitude, setLatitude);
@@ -79,14 +79,19 @@ export function App() {
           </div>
         </div>
 
-        <CheckBox />
+        <Button
+          value={showMarker ? "Show" : 'Hide'}
+          className='is-fullwidth block button is-primary'
+          onClick={() => { setShowMarker(!showMarker) }}
+        />
         <div style={{ height: '500px', width: '100%' }}>
           <GoogleMapReact
             height="500px"
             defaultCenter={{ lat: initPosition.lat, lng: initPosition.lng }}
             defaultZoom={mapInfo.zoom}
           >
-            <Maker lat={latitude} lng={longitude} />
+            {showMarker ? <Maker lat={latitude} lng={longitude} /> : <></>}
+
           </GoogleMapReact>
         </div>
       </div>
