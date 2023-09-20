@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 export default function Input(props) {
-  const { name, type,  setValue, value } = props;
+  const { name, type, setValue, value } = props;
   return (
     <div >
       {name}
@@ -9,7 +9,7 @@ export default function Input(props) {
         class='input is-primary'
         type={type}
         value={value}
-        onInput={(e)=>setValue(e.target.dispatchEvent)}
+        onInput={(e) => setValue(e.target.value)}
       />
     </div>
   );
