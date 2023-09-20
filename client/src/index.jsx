@@ -6,7 +6,6 @@ import { useState, useEffect } from 'preact/hooks';
 //import component
 import Button from './component/Button';
 import Input from './component/Input';
-import CheckBox from './component/Checkbox';
 import GoogleMapReact from 'google-map-react';
 //import constant
 import { initPosition } from './constant';
