@@ -80,7 +80,7 @@ export function App() {
         </div>
 
         <Button
-          value={showMarker ? "Show" : 'Hide'}
+          value={showMarker ? "Hide" : 'Show'}
           className='is-fullwidth block button is-primary'
           onClick={() => { setShowMarker(!showMarker) }}
         />
