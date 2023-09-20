@@ -1,11 +1,9 @@
 const path = require("path");
 const AutoLoad = require("@fastify/autoload");
 
-const { DB_SERVER, DB_USER, DB_NAME } = "./config/db";
-
 module.exports = async function (fastify, opts) {
   fastify.register(require("@fastify/mysql"), {
-    connectionString: `${DB_SERVER}://${DB_USER}@localhost/${DB_NAME}`,
+    connectionString: `${process.env.DB_SERVER}://${process.env.DB_USER}@localhost/${process.env.DB_NAME}`,
   });
 
   fastify.register(AutoLoad, {
